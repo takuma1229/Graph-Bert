@@ -105,20 +105,20 @@ class MethodGraphBertNodeClassification(BertPreTrainedModel):
                              'pred_y': output.max(1)[1]}
             acc_test = accuracy.evaluate()
 
-            self.learning_record_dict[epoch] = {'loss_train': loss_train.item(), 'acc_train': acc_train.item(),
-                                                'loss_val': loss_val.item(), 'acc_val': acc_val.item(),
-                                                'loss_test': loss_test.item(), 'acc_test': acc_test.item(),
+            self.learning_record_dict[epoch] = {'loss_train': loss_train.item(), 'acc_train': acc_train,
+                                                'loss_val': loss_val, 'acc_val': acc_val,
+                                                'loss_test': loss_test, 'acc_test': acc_test,
                                                 'time': time.time() - t_epoch_begin}
 
             # -------------------------
             if epoch % 10 == 0:
                 print('Epoch: {:04d}'.format(epoch + 1),
                       'loss_train: {:.4f}'.format(loss_train.item()),
-                      'acc_train: {:.4f}'.format(acc_train.item()),
-                      'loss_val: {:.4f}'.format(loss_val.item()),
-                      'acc_val: {:.4f}'.format(acc_val.item()),
-                      'loss_test: {:.4f}'.format(loss_test.item()),
-                      'acc_test: {:.4f}'.format(acc_test.item()),
+                      'acc_train: {:.4f}'.format(acc_train),
+                      'loss_val: {:.4f}'.format(loss_val),
+                      'acc_val: {:.4f}'.format(acc_val),
+                      'loss_test: {:.4f}'.format(loss_test),
+                      'acc_test: {:.4f}'.format(acc_test),
                       'time: {:.4f}s'.format(time.time() - t_epoch_begin))
 
         print("Optimization Finished!")
