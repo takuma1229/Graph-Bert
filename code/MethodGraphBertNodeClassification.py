@@ -122,6 +122,7 @@ class MethodGraphBertNodeClassification(BertPreTrainedModel):
                       'time: {:.4f}s'.format(time.time() - t_epoch_begin))
 
         print("Optimization Finished!")
+        torch.save(self, './models/test.pth')
         # print("Total time elapsed: {:.4f}s".format(time.time() - t_begin) + ', best testing performance {: 4f}'.format(np.max([self.learning_record_dict[epoch]['acc_test'] for epoch in self.learning_record_dict])) + ', minimun loss {: 4f}'.format(np.min([self.learning_record_dict[epoch]['loss_test'] for epoch in self.learning_record_dict])))
         return time.time() - t_begin, np.max([self.learning_record_dict[epoch]['acc_test'] for epoch in self.learning_record_dict])
 
